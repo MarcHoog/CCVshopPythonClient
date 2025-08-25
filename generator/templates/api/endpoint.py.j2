@@ -1,0 +1,16 @@
+from typing import Any, List
+from ..result import CCVShopResult
+from ..models.{{ model_name|lower }} import {{ model_name }}
+from .endpoint import CCVApiEndpoints
+
+class {{ endpoint_class_name }}(CCVApiEndpoints):
+
+{% for op in operations %}
+    def {{ op.op_id }}(self{% for p in op.params %}, {{ p.name }}: {{ p.py_type }}{% if not p.required %} | None = None{% endif %}{% endfor %}{% if op.request_body_type %}, body: {{ op.request_body_type }}{% endif %}, **params: Any) -> {{ op.response.py_type }}:
+        result: CCVShopResult = self.client._{{ op.method }}("{{ op.path }}"{% if op.request_body_type %}, body=body.model_dump(){% endif %}, **params)
+        {% if op.response.py_type != "None" %}
+        return {{ op.response.py_type }}.model_validate(result.data)
+        {% else %}
+        return None
+        {% endif %}
+{% endfor %}
