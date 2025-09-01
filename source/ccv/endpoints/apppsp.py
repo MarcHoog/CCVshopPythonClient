@@ -35,7 +35,8 @@ class Apppsp:
             uri_path=f"/api/rest/v1/apppsp/{id}/",
         )
 
-    def gets_a_collection_of_all_(but_always_one)_app_payment_service_provider(
+
+    def gets_a_collection_of_all_app_payment_service_provider(
         self,
         id: str,
         per_page: int = 100,
@@ -61,22 +62,6 @@ class Apppsp:
         """
         return self.client._get(
             uri_path=f"/api/rest/v1/apppsp/{id}/",
-        )
-
-    def gets_a_collection_of_all_(but_always_one)_app_payment_service_provider(
-        self,
-        per_page: int = 100,
-        total_pages: int = 1,
-        **params,
-    ) -> CCVShopResult:
-        """
-        Gets a collection of all (but always one) App Payment Service Provider
-        """
-        return self.client._get_paged(
-            uri_path="/api/rest/v1/apppsp/",
-            per_page=per_page,
-            total_pages=total_pages,
-            **params,
         )
 
     def patches_an_existing_app_psp(
