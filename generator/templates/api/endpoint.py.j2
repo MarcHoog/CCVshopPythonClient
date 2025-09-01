@@ -8,11 +8,11 @@ Endpoints:
 {%- endfor %}
 """
 
-from typing import Any, List, Dict
-from ..result import CCVShopResult
+from typing import Dict
+from ccv.result import CCVShopResult
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from ..client import CCVClient
+    from ccv.client import CCVClient
 
 class {{ name | capitalize }}:
     def __init__(self, client: 'CCVClient'):
@@ -34,7 +34,7 @@ class {{ name | capitalize }}:
         total_pages: int = 1,
         **params,
 {%- endif %}
-{%- if op.method | lower in ["post", "patch"] %}
+{%- if op.method | lower in ["post", "patch", "put"] %}
         body: Dict,
 {%- endif %}
     ) -> CCVShopResult:
@@ -60,7 +60,7 @@ class {{ name | capitalize }}:
             {%- else -%}
                 "/api/rest{{ op.path | lower | replace(':version', 'v1') }}"
             {%- endif %},
-{%- if op.method | lower in ["post", "patch"] %}
+{%- if op.method | lower in ["post", "patch", "put"] %}
             body=body,
 {%- endif %}
         )
