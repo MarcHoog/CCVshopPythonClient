@@ -1,3 +1,8 @@
+# Warning
+
+This is not activly maintained, or tested ("if somebody actually wants that message me")
+It was mostly a learning experience
+
 # CCVShop Python API Client & Generator
 
 This project provides:
