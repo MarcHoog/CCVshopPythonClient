@@ -1,0 +1,10 @@
+{%- for cat in categories %}
+from .{{ cat.name | lower }} import {{ cat.name | capitalize }}
+{%- endfor %}
+
+
+__all__ = [
+{%- for cat in categories %}
+    "{{ cat.name | capitalize }}",
+{%- endfor %}
+]
