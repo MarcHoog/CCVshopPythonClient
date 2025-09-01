@@ -39,7 +39,7 @@ class Products:
             uri_path=f"/api/rest/v1/products/{id}/",
         )
 
-    def retrieve_all_products_of_the_webshop_in_the_parent_category(
+    def retrieve_all_products_of_the_webshop_in_the_parent_brand(
         self,
         id: str,
     ) -> CCVShopResult:
@@ -61,7 +61,7 @@ class Products:
             uri_path=f"/api/rest/v1/webshops/{id}/products/",
         )
 
-    def retrieve_all_products_of_the_webshop(
+    def retrieve_all_products(
         self,
     ) -> CCVShopResult:
         """
@@ -93,7 +93,7 @@ class Products:
             uri_path=f"/api/rest/v1/categories/{id}/products/",
         )
 
-    def retrieve_all_products_of_the_webshop_in_the_parent_category(
+    def retrieve_all_products_of_the_webshop_in_the_parent_condition(
         self,
         id: str,
     ) -> CCVShopResult:
@@ -104,7 +104,7 @@ class Products:
             uri_path=f"/api/rest/v1/conditions/{id}/products/",
         )
 
-    def retrieve_all_products_of_the_webshop_in_the_parent_category(
+    def retrieve_all_products_of_the_webshop_in_the_parent_supplier(
         self,
         id: str,
     ) -> CCVShopResult:
